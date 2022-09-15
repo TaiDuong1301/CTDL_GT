@@ -1,3 +1,7 @@
+/**
+ * @brief Thuật toán sắp xếp đổi chổ trực tiếp (interchange sort):
+ * duyệt phần tử đầu mảng, đổi chổ với các phần tử khác nếu không theo thứ tự.
+ */
 #include<iostream>
 using namespace std;
 

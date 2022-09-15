@@ -1,3 +1,16 @@
+/**
+ * @file BubbleSort.cpp
+ * @author taiduong1510@gmail.com
+ * @brief Sắp xếp nổi bọt là một thuật toán sắp xếp đơn giản,
+ * với thao tác cơ bản là so sánh hai phần tử kề nhau, nếu chúng chưa đứng đúng thứ tự thì đổi chỗ (swap). 
+ * Sắp xếp nổi bọt còn có tên là sắp xếp bằng so sánh trực tiếp. 
+ * Nó sử dụng phép so sánh các phần tử nên là một giải thuật sắp xếp kiểu so sánh.
+ * @version 0.1
+ * @date 2022-09-14
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include<iostream>
 using namespace std;
 

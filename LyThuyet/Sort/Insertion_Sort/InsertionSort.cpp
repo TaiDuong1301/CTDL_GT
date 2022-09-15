@@ -1,3 +1,8 @@
+/**
+ * @brief Sắp xếp chèn (insertion sort) là một thuật toán sắp xếp bắt chước cách sắp xếp quân bài của những người chơi bài. 
+ * Muốn sắp một bộ bài theo trật tự người chơi bài rút lần lượt từ quân thứ 2, 
+ * so với các quân đứng trước nó để chèn vào vị trí thích hợp.
+ */
 #include <iostream>
 using namespace std;
 
