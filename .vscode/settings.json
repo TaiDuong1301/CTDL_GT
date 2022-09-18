@@ -3,6 +3,10 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "*.tcc": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "stack": "cpp",
+        "cmath": "cpp",
+        "climits": "cpp",
+        "deque": "cpp"
     }
 }
