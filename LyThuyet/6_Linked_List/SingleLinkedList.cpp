@@ -40,7 +40,17 @@ Node *PickHead(LinkedList &list);
 
 int main()
 {
+    Node *p;
+    LinkedList list;
+    Init(list);
+    for (int i = 0; i < 5; i++)
+    {
+        p = GetNode(i);
+        addHead(list, p);
+    }
     
+    Output(list);
+
     return 0;
 }
 /**

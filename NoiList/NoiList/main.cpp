@@ -1,12 +1,12 @@
 /**
  * @file VD2.cpp
  * @author Duong Van Tai
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2022-09-19
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 #include<iostream>
 using namespace std;
@@ -30,6 +30,7 @@ void CreateListhead(List &l);
 void PrintList(List l);
 long SumEvenNumber(List l);
 Node *Search(List l, int x);
+List Noi(List &l1, List &l2);
 
 int main() {
     List l;
@@ -37,19 +38,19 @@ int main() {
     CreateListhead(l);
     PrintList(l);
 
-    cout << "SumEvenNumber(l) = " << SumEvenNumber(l) << endl;
+    List l2;
+    Init(l2);
+    CreateListhead(l2);
+    PrintList(l2);
 
-    int x;
-    cout << "Nhap gia tri x can tim trong list: ";
-    cin >> x;
-    cout << Search(l, x);
+    PrintList(Noi(l, l2));
 
     return 0;
 }
 /**
- * @brief Khởi tạo 
- * 
- * @param l 
+ * @brief Khởi tạo
+ *
+ * @param l
  */
 void Init(List &l) {
     l.head = l.tail = NULL;
@@ -130,4 +131,11 @@ Node *Search(List l, int x) {
         p = p->link;
     }
     return NULL;
+}
+
+List Noi(List &list1, List &list2) {
+    List temp = list1;
+    temp.tail->link = list2.head;
+    temp.tail = list2.tail;
+    return temp;
 }
