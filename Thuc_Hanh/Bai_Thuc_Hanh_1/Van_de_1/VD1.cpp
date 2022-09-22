@@ -1,12 +1,10 @@
 /**
  * @file VD1.cpp
- * @author your name (you@domain.com)
+ * @author Duong Van Tai
  * @brief  Ôn tập các thao tác trên mảng một chiều
  * @version 0.1
- * @date 2022-09-20
  * 
  * @copyright Copyright (c) 2022
- * 
  */
 #include <iostream>
 #include <stdlib.h>
@@ -24,24 +22,20 @@ int DocFileTextVaoMang(string filename, int a[], int &n);
 int main(int argc, char const *argv[])
 {
     int n;
-    cout << "Input n: ";
+    cout << "Enter n: ";
     cin >> n;
     int a[n];
+    string filename = "VD1Text.txt";
+
     PhatSinhMang(a, n);
     XuatMang(a, n);
 
-    string filename;
-    filename = "VD1Text.txt";
-
-    GhiMangVaoFileText(filename, a, n) ? cout << "Success" << endl : cout << "Error" << endl;
+    GhiMangVaoFileText(filename, a, n);
 
     int b[n];
-
-    DocFileTextVaoMang(filename, b, n) ? cout << "Success" << endl : cout << "Error" << endl;
+    DocFileTextVaoMang(filename, b, n);
 
     XuatMang(b, n);
-
-    XuatMang(a, n);
 
     return 0;
 }
@@ -69,10 +63,11 @@ void XuatMang(int a[], int n) {
 }
 
 int GhiMangVaoFileText(string filename, int a[], int n) {
-    // FILE *f = fopen(filename, "wt");
     ofstream f(filename);
+
     if (!f.is_open())
         return 0;
+        
     for (int i = 0; i < n; i++)
     {
         f << a[i] << "\t";
@@ -84,14 +79,14 @@ int GhiMangVaoFileText(string filename, int a[], int n) {
 int DocFileTextVaoMang(string filename, int a[], int &n) {
     ifstream f(filename);
     if (!f.is_open()) {
+        cout << "Can't open the file";
         return 0;
     }
     int i = 0;
-    while (f.eof()) {
-        f >> a[i];
+    while (f >> a[i]) {
         i++;
     }
-    // n = i;
+    n = i;
     f.close();
     return 1;
 }
