@@ -5,11 +5,21 @@ void SelectionSort(int a[], int n);
 void InsertionSort(int a[], int n);
 void InterchangeSort(int a[], int n);
 void BubbleSort(int a[], int n);
-void QuickSort(int a[], int n);
+void QuickSort(int a[], int left, int right);
 
 int main()
 {
-    
+    int n, x;
+    n = 8;
+    int a[] = {10, 3, 7, 4, 2, 8, 5, 12};
+
+    QuickSort(a, 0, n - 1);
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << a[i] << " ";
+    }
+
     return 0;
 }
 /**
@@ -101,7 +111,36 @@ void BubbleSort(int a[], int n) {
     }
     
 }
-
-void QuickSort(int a[], int n) {
+/**
+ * @brief chia danh sách cần sắp xếp a[1..n] 
+ * thành hai danh sách con có kích thước tương đối bằng nhau nhờ chỉ số đứng giữa danh sách, 
+ * sắp xếp nhanh chia nó thành hai danh sách bằng cách so sánh từng phần tử của danh sách với một phần tử được chọn được gọi là phần tử chốt. 
+ * Những phần tử nhỏ hơn hoặc bằng phần tử chốt được đưa về phía trước và nằm trong danh sách con thứ nhất, 
+ * các phần tử lớn hơn chốt được đưa về phía sau và thuộc danh sách đứng sau. Cứ tiếp tục chia như vậy tới khi các danh sách con đều có độ dài bằng 1.
+ * 
+ * @param a 
+ * @param n 
+ */
+void QuickSort(int a[], int left, int right) {
+    int i, j, pivot;
+    if (left >= right)
+        return;
     
+    pivot = a[(left + right) / 2];
+    i = left;
+    j = right;
+    while (i < j)
+    {
+        while (a[i] < pivot) 
+            i++;
+        while (a[j] > pivot)
+            j--;
+        if (i <= j) {
+            swap(a[i], a[j]);
+            i++;
+            j--;
+        }
+    }
+    QuickSort(a, left, j);
+    QuickSort(a, i , right);
 }
