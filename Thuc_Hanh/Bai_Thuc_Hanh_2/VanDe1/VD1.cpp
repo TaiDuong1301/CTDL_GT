@@ -5,6 +5,7 @@ void SelectionSort(int a[], int n);
 void InsertionSort(int a[], int n);
 void InterchangeSort(int a[], int n);
 void BubbleSort(int a[], int n);
+void QuickSort(int a[], int n);
 
 int main()
 {
@@ -49,18 +50,58 @@ void SelectionSort(int a[], int n) {
  * @param n 
  */
 void InserttionSort(int a[], int n) {
-    int x, pos;
+    int pos, current;
     for (int i = 1; i < n; i++)
     {
         pos = i - 1;
-        x = a[i];
-        while (pos >= 0 && x < a[pos])
+        current = a[i];
+        while (pos >= 0 && a[pos] > current)
         {
-            a[pos  + 1] = pos;
-            pos--;
+            a[pos + 1] = a[pos];
+            pos --;
         }
-        a[pos + 1] = x;
+        a[pos + 1] = current;
+    }
+    
+}
+
+void InterchangeSort(int a[], int n) {
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (a[i] > a[j])
+            {
+                swap(a[i], a[j]);
+            }
+            
+        }
         
     }
+    
+}
+/**
+ * @brief Sắp xếp nổi bọt là một thuật toán sắp xếp đơn giản,
+ * với thao tác cơ bản là so sánh hai phần tử kề nhau, nếu chúng chưa đứng đúng thứ tự thì đổi chỗ (swap). 
+ * Sắp xếp nổi bọt còn có tên là sắp xếp bằng so sánh trực tiếp. 
+ * Nó sử dụng phép so sánh các phần tử nên là một giải thuật sắp xếp kiểu so sánh.
+ * 
+ * @param a 
+ * @param n 
+ */
+void BubbleSort(int a[], int n) {
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = n - 1; j > i; j--)
+        {
+            if (a[j] < a[j - 1])
+                swap(a[j], a[j - 1]);
+        }
+        
+    }
+    
+}
+
+void QuickSort(int a[], int n) {
     
 }
