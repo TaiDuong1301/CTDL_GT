@@ -110,7 +110,7 @@ void output(List l) {
     cout << endl;
 }
 /**
- * @brief 
+ * @brief Merge two linkedlist
  * 
  * @param l1 
  * @param l2 
