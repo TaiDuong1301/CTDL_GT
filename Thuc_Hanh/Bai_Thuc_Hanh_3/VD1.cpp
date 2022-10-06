@@ -31,7 +31,7 @@ typedef struct LIST
 
 void Init(LIST &l);
 NODE *GetNode(SINHVIEN x);
-void AddHead(LIST &l, NODE new_ele);
+void AddHead(LIST &l, NODE *new_ele);
 
 int main() 
 {
@@ -66,8 +66,21 @@ NODE *GetNode(SINHVIEN x)
     p->pNext = NULL;
     return p;
 }
-
-void AddHead(LIST &l, NODE new_ele) 
+/**
+ * @brief Them 1 sinh vien vao dau danh sach
+ * 
+ * @param l 
+ * @param new_ele 
+ */
+void AddHead(LIST &l, NODE *new_ele) 
 {
-    
+    if (l.pHead == NULL)
+    {
+        l.pHead = l.pTail = new_ele;
+    } 
+    else
+    {
+        new_ele->pNext = l.pHead;
+        l.pHead = new_ele;
+    }
 }
