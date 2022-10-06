@@ -20,6 +20,7 @@ struct LinkedList
     Node *tail;
 };
 
+
 Node *createNode(int x);
 void Init(LinkedList *list);
 Node *addElement(Node *newNode, string id, string name);
