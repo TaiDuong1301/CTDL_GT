@@ -1,106 +1,73 @@
-#include <iostream>
-using namespace std;
+/**
+ * @file VD1.cpp
+ * @author 21136801_DuongVanTai
+ * @brief Su dung dslk de luu thong tin sinh vien
+ * @version 0.1
+ * @date 2022-10-06
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+#include <stdio.h>
 
-struct SinhVien
+typedef struct SINHVIEN
 {
-    string id;
-    string name;
+    char *mssv;
+    char *ho_ten;
 };
 
 
-struct Node
+typedef struct NODE
 {
-    SinhVien data;
-    Node *link;
+    SINHVIEN data;
+    NODE *pNext;
 };
 
-struct LinkedList
+typedef struct LIST
 {
-    Node *head;
-    Node *tail;
+    NODE *pHead;
+    NODE *pTail;
 };
 
+void Init(LIST &l);
+NODE *GetNode(SINHVIEN x);
+void AddHead(LIST &l, NODE new_ele);
 
-Node *createNode(int x);
-void Init(LinkedList *list);
-Node *addElement(Node *newNode, string id, string name);
-void printList(Node *list);
-
-int main()
+int main() 
 {
-    int n;
-    string id, name;
-    cout << "Nhap so luong sinh vien: ";   
-    cin >> n;
-    fflush(stdin);
-    Node *l = new Node;
-    Node *p = l;
-
-    for (int i = 0; i < n; i++)
-    {
-        cout << "Nhap mssv thu " << i+1 << " : ";
-        getline(cin, id);
-        cout << "Nhap ten sinh vien : ";
-        getline(cin, name);
-        p = addElement(p, id, name);
-    }
-    cout << endl;
-    printList(l);
-
-    cout << endl << "VD1: " << endl;
-    cout << p << endl;
-    cout << p->data.id << endl;
-    cout << p->link << endl;
-    cout << p->link->data.id << endl;
-    cout << p->link->link << endl;
-    cout << p->link->link->data.id << endl;
 
     return 0;
 }
 /**
- * @brief tạo ra một node cho danh sách với thông tin chứa trong x
- * CreateNode function
+ * @brief Khoi tao dslk
  * 
- * @return Node* 
+ * @param l 
  */
-Node *createNode(string id, string name) {
-    Node *p = new Node;
-    if (p == NULL) {
-        cout << "Khong du bo nho" << endl;
+void Init(LIST &l)
+{
+    l.pHead = l.pTail = NULL;
+}
+/**
+ * @brief Get the NODE object
+ * create a NODE with data = name
+ * 
+ * @param name 
+ * @return NODE* 
+ */
+NODE *GetNode(SINHVIEN x)
+{
+    NODE *p = new NODE;
+    if (p == NULL)
+    {
+        printf("Khong du bo nho\n");
         return NULL;
     }
-    p->data.id = id;
-    p->data.name = name;
-    p->link = NULL;
+    p->data = x;
+    p->pNext = NULL;
     return p;
 }
-/**
- * @brief tạo danh sách rỗng
- * 
- * @param link 
- */
-void Init(LinkedList *link) {
-    link->head = link->tail = NULL;
-}
-/**
- * @brief Thêm một phần tử vào cuối linkList
- * 
- * @param newNode 
- * @param id 
- * @param name 
- * @return Node* 
- */
-Node *addElement(Node *newNode, string id, string name) {
-    Node *temp = createNode(id, name);
-    newNode->link = temp;
-    return temp;
-}
 
-void printList(Node *list) {
-    Node *p = list;
-    cout << "Danh sach sinh vien: ";
-    while (p != NULL) {
-        cout << p->data.id << " " << p->data.name << endl;
-        p = p->link;
-    }
+void AddHead(LIST &l, NODE new_ele) 
+{
+    
 }
