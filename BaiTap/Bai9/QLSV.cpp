@@ -9,8 +9,9 @@
  * 
  */
 #include <iostream>
-#include <cstring>
-#include <cstdio>
+#include <string.h>
+#include <stdio.h>
+
 typedef struct SINHVIEN
 {
     char id[9];
@@ -37,6 +38,8 @@ SINHVIEN InputStudent();
 void PrintStudent(SINHVIEN x);
 void InputListStudent(LIST &l);
 void PrintListStudent(LIST l);
+int removeStudent(LIST &l, char id[]);
+void SortStudentByGPA(LIST &l);
 
 
 
@@ -48,14 +51,18 @@ void AddTail(LIST &l, NODE *new_node);
 void AddAfter(LIST &l, NODE *prev_node, NODE *new_node);
 int removeHead(LIST &l);
 int removeAfter(LIST &l, NODE *prev_node);
+void swapNode(LIST &l, NODE *prev_x, NODE *x, NODE *prev_y, NODE *y);
+
 
 int main() {
     LIST list;
     Init(list);
-
+    
     InputListStudent(list);
 
     PrintListStudent(list);
+
+    
 
     return 0;
 }
@@ -184,6 +191,25 @@ int removeAfter(LIST &l, NODE *prev_node)
     }
     return 0;
 }
+
+void swapNode(LIST &l, NODE *prev_x, NODE *x, NODE *prev_y, NODE *y)
+{
+    NODE *temp = y->pNext;
+    if (prev_x == NULL)
+    {
+        y->pNext = x->pNext;
+        x->pNext = temp;
+        l.pHead = y;
+    }
+    else
+    {
+        y->pNext = x->pNext;
+        x->pNext = temp;
+        prev_x->pNext = y;
+        prev_y->pNext = x;
+    }
+
+}
 /**
  * @brief Enter info for a student
  * 
@@ -197,7 +223,7 @@ SINHVIEN InputStudent() {
     printf("Enter name: ");
     gets(temp.name);
     fflush(stdin);
-    printf("Enter gender: ");
+    printf("Enter gender (0: Female, 1: Male): ");
     scanf("%d", &temp.gender);
     fflush(stdin);
     printf("Enter address: ");
@@ -253,5 +279,44 @@ void InputListStudent(LIST &l)
         
         AddTail(l, GetNode(InputStudent()));
     } while (n != 0);
+    
+}
+/**
+ * @brief Delete a student
+ * 
+ * @param l 
+ * @param id 
+ * @return int 
+ */
+int removeStudent(LIST &l, char id[])
+{
+    NODE *p = l.pHead;
+    NODE *prev_node = new NODE;
+    while (p != NULL)
+    {
+        if (p->data.id == id)
+        {
+            break;
+        }
+        prev_node = p;
+        p = p->pNext;
+    }
+    if (p == NULL)
+    {
+        printf("Not found id: %s in list", id);
+        return 0;
+    }
+    else if (prev_node == NULL)
+    {
+        removeHead(l);
+    }
+    else
+    {
+        removeAfter(l, prev_node);
+    }
+}
+
+void SortStudentByGPA(LIST &l)
+{
     
 }

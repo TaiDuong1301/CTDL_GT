@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <iostream>
 
 typedef struct NODE
 {
@@ -25,6 +26,9 @@ int removeNode(LIST &l, int key);
 void removeList(LIST &l);
 int CountNodes(LIST l);
 NODE *PickHead(LIST &l);
+void swapNode(LIST &l, NODE *prev_x, NODE *x, NODE *prev_y, NODE *y);
+void doicho(LIST &l);
+// void swap(NODE &a, NODE &b);
 
 int main()
 {
@@ -43,6 +47,11 @@ int main()
     AddAfter(list, temp, GetNode(6));
 
     PrintList(list);
+
+    // doicho(list);
+
+    // PrintList(list);
+
 }
 
 NODE *GetNode(int x)
@@ -162,7 +171,7 @@ int removeNode(LIST &l, int key)
 {
     NODE *p = l.pHead;
     NODE *prev_node = NULL;
-    while (p->data != NULL)
+    while (p != NULL)
     {
         if (p->data == key)
         {
@@ -228,3 +237,35 @@ NODE *PickHead(LIST &l)
     }
     return p;
 }
+
+void swapNode(LIST &l, NODE *prev_x, NODE *x, NODE *prev_y, NODE *y)
+{
+    NODE *temp = y->pNext;
+    if (prev_x == NULL)
+    {
+        y->pNext = x->pNext;
+        x->pNext = temp;
+        l.pHead = y;
+    }
+    else
+    {
+        y->pNext = x->pNext;
+        x->pNext = temp;
+        prev_x->pNext = y;
+        prev_y->pNext = x;
+    }
+
+}
+
+void doicho(LIST &l)
+{
+    NODE *temp = l.pHead->pNext;
+    temp = temp->pNext;
+    std::swap(temp, l.pHead);
+}
+
+// void swap(NODE &a, NODE &b){
+//     NODE temp = a;
+//     a = b;
+//     b = temp;
+// }
