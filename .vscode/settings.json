@@ -108,5 +108,6 @@
         "cuchar": "cpp",
         "source_location": "cpp",
         "syncstream": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

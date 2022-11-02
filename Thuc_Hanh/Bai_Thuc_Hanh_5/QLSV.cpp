@@ -10,6 +10,7 @@
  */
 #include <iostream>
 #include <string.h>
+#include<iostream>
 
 typedef struct Ngay
 {
