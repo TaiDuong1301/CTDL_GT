@@ -57,6 +57,13 @@ void XuatSinhVien(SinhVien s);
 // ham xuat danh sach sinh vien
 void XuatDSSV(List l);
 
+int InsertFirst_KhongTrung(List &l, SinhVien x);
+
+int Search(List &l, char masv[]);
+
+void AddFirst(List &l, Node *new_ele);
+void InsertFirst(List &l, SinhVien x);
+
 int main()
 {
     List(l);
@@ -168,4 +175,55 @@ void XuatDSSV(List l)
         p = p->link;
     }
     
+}
+/**
+ * @brief Them sinh vien x vao danh sach l
+ * 
+ * @param l 
+ * @param x 
+ * @return 1 them thanh cong, 0 them that bai(ton tai sinh vien co ma nay)
+ */
+int InsertFirst_KhongTrung(List &l, SinhVien x)
+{
+    if (Search(l, x.maSV))
+    {
+        printf("Ma sinh vien trung");
+        return 0;
+    }
+    else
+    {
+        InsertFirst(l, x);
+        return 1;
+    }
+}
+
+int Search(List &l, char masv[])
+{
+    Node *p = l.first;
+    while (p != NULL)
+    {
+        if (p->data.maSV == masv)
+        {
+            return 1;
+        }
+        
+        p = p->link;
+    }
+    return 0;
+}
+
+void AddFirst(List &l, Node *new_ele)
+{
+    if (l.first == NULL)
+    {
+        l.first = l.last = new_ele;
+    }
+    new_ele->link = l.first;
+    l.first = new_ele;
+}
+
+void InsertFirst(List &l, SinhVien x)
+{
+    Node *p = GetNode(x);
+    AddFirst(l, p);
 }
