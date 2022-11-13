@@ -96,17 +96,9 @@ void Xuat(TREE c)
 {
     if (c != NULL)
     {
-        if (c->pLeft != NULL)
-        {
-            Xuat(c->pLeft);
-        }
+        Xuat(c->pLeft);
         XuatSinhVien(c->key);
-        if (c->pRight != NULL)
-        {
-            Xuat(c->pRight);
-        }
-        
-        
+        Xuat(c->pRight); 
     }
     
 }
